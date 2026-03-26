@@ -1,31 +1,195 @@
-/* Simple, clean, centered card inspired by the Canva design */
-:root{
-  --bg:#f7f7fb;
-  --card:#ffffff;
-  --accent:#5b7cff;
-  --muted:#6b7280;
-  --error:#ef4444;
-  --success:#16a34a;
-  --shadow: 0 8px 30px rgba(3,7,18,0.08);
-  --radius: 12px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background: #fff;display:flex;align-items:center;justify-content:center;padding:2rem}
 
-.page{width:100%;max-width:640px}
-.card{background:#fff;border-radius:8px;padding:1.5rem;border:1px solid #e6e6e6}
-.card-header{margin-bottom:1rem;text-align:center}
-#form-title{margin:0;font-size:1.1rem;font-weight:700;color:#111}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #eef1f6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-form{display:grid;gap:.75rem}
-.field{display:flex;flex-direction:column}
-label{font-size:.9rem;color:#111;margin-bottom:.35rem}
-input[type="text"],input[type="email"],input[type="tel"],input[type="password"]{padding:.6rem .6rem;border:1px solid #ccc;border-radius:6px;font-size:.95rem}
 
-.actions{display:flex;justify-content:center;margin-top:.6rem}
-#submit-btn{background:#0f62fe;color:white;border:none;padding:.6rem 1.2rem;border-radius:6px;cursor:pointer}
+.container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
 
-@media (max-width:420px){.card{padding:1rem}}
 
+.form-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 42px 38px;
+  border-radius: 12px;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.09);
+}
+
+.form-card h2 {
+  font-size: 1.65rem;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 0.87rem;
+  color: #999;
+  margin-bottom: 26px;
+}
+
+
+.success-box {
+  background: #e9f9ef;
+  border: 1px solid #a8dab5;
+  color: #1e7e44;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 13px 16px;
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
+
+
+.error-box {
+  background: #fdf0ef;
+  border: 1px solid #f5b7b1;
+  color: #c0392b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 13px 16px;
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
+
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 7px;
+}
+
+
+.required {
+  color: #e74c3c;
+}
+
+
+.form-group input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 7px;
+  font-size: 0.95rem;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #4a90e2;
+}
+
+
+.form-group input.is-invalid {
+  border-color: #e74c3c;
+}
+
+
+.form-group input.is-valid {
+  border-color: #27ae60;
+}
+
+
+.field-error {
+  display: block;
+  color: #e74c3c;
+  font-size: 0.78rem;
+  margin-top: 5px;
+  min-height: 15px;
+}
+
+
+.input-with-btn {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.input-with-btn input {
+  flex: 1;
+}
+
+.show-hide-btn {
+  background: #f2f4f7;
+  border: 1.5px solid #ddd;
+  border-radius: 7px;
+  padding: 0 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.show-hide-btn:hover {
+  background: #e2e6ea;
+}
+
+
+.strength-rules {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 11px;
+}
+
+.strength-rules li {
+  font-size: 0.73rem;
+  padding: 3px 10px;
+  background: #f2f4f7;
+  border-radius: 4px;
+  color: #aaa;
+  transition: background 0.2s, color 0.2s;
+}
+
+
+.strength-rules li.passed {
+  background: #e9f9ef;
+  color: #27ae60;
+  font-weight: 700;
+}
+
+
+#submitBtn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 4px;
+  background: #4a90e2;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#submitBtn:hover {
+  background: #357abd;
+}
