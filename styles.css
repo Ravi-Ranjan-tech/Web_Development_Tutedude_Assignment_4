@@ -1,0 +1,31 @@
+/* Simple, clean, centered card inspired by the Canva design */
+:root{
+  --bg:#f7f7fb;
+  --card:#ffffff;
+  --accent:#5b7cff;
+  --muted:#6b7280;
+  --error:#ef4444;
+  --success:#16a34a;
+  --shadow: 0 8px 30px rgba(3,7,18,0.08);
+  --radius: 12px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background: #fff;display:flex;align-items:center;justify-content:center;padding:2rem}
+
+.page{width:100%;max-width:640px}
+.card{background:#fff;border-radius:8px;padding:1.5rem;border:1px solid #e6e6e6}
+.card-header{margin-bottom:1rem;text-align:center}
+#form-title{margin:0;font-size:1.1rem;font-weight:700;color:#111}
+
+form{display:grid;gap:.75rem}
+.field{display:flex;flex-direction:column}
+label{font-size:.9rem;color:#111;margin-bottom:.35rem}
+input[type="text"],input[type="email"],input[type="tel"],input[type="password"]{padding:.6rem .6rem;border:1px solid #ccc;border-radius:6px;font-size:.95rem}
+
+.actions{display:flex;justify-content:center;margin-top:.6rem}
+#submit-btn{background:#0f62fe;color:white;border:none;padding:.6rem 1.2rem;border-radius:6px;cursor:pointer}
+
+@media (max-width:420px){.card{padding:1rem}}
+
