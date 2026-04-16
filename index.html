@@ -1,84 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Validation App</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Validation — Ravi Ranjan</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <div class="container">
-    <div class="form-card">
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
 
-      <h2>Create Account</h2>
-      <p class="subtitle">Please fill in all the details below</p>
+  <main class="page-center">
+    <div class="card">
 
-     
-      <div id="successMsg" class="success-box" style="display: none;"></div>
+      <div class="card-header">
+        <div class="logo-mark">RR</div>
+        <h1 class="card-title">Create Account</h1>
+        <p class="card-subtitle">Fill in the details below to get started</p>
+      </div>
 
-     
-      <div id="errorMsg" class="error-box" style="display: none;"></div>
+      <div id="successMsg" class="alert alert-success" role="alert" aria-live="polite" style="display:none;">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="successText">Form submitted successfully!</span>
+      </div>
+
+      <div id="errorMsg" class="alert alert-error" role="alert" aria-live="polite" style="display:none;">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="errorText">Please fix the errors below.</span>
+      </div>
 
       <form id="registrationForm" novalidate>
 
-      
-        <div class="form-group">
+        <div class="form-group" id="group-name">
           <label for="fullName">Full Name <span class="required">*</span></label>
-          <input type="text" id="fullName" placeholder="Enter your full name">
-          <small class="field-error" id="fullNameError"></small>
+          <div class="input-wrap">
+            <i class="fa-solid fa-user input-icon"></i>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="e.g. Ravi Ranjan"
+              autocomplete="name"
+            />
+          </div>
+          <span class="field-error" id="err-name"></span>
         </div>
 
-       
-        <div class="form-group">
+        <div class="form-group" id="group-email">
           <label for="email">Email Address <span class="required">*</span></label>
-          <input type="text" id="email" placeholder="user@example.com">
-          <small class="field-error" id="emailError"></small>
+          <div class="input-wrap">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="user@example.com"
+              autocomplete="email"
+            />
+          </div>
+          <span class="field-error" id="err-email"></span>
         </div>
 
-        
-        <div class="form-group">
+        <div class="form-group" id="group-phone">
           <label for="phone">Phone Number <span class="required">*</span></label>
-          <input type="text" id="phone" placeholder="10-digit number" maxlength="10">
-          <small class="field-error" id="phoneError"></small>
+          <div class="input-wrap">
+            <i class="fa-solid fa-phone input-icon"></i>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="10-digit number"
+              maxlength="10"
+              autocomplete="tel"
+            />
+          </div>
+          <span class="field-error" id="err-phone"></span>
         </div>
 
-       
-        <div class="form-group">
+        <div class="form-group" id="group-password">
           <label for="password">Password <span class="required">*</span></label>
-          <div class="input-with-btn">
-            <input type="password" id="password" placeholder="Create a strong password">
-            <button type="button" id="togglePassword" class="show-hide-btn">Show</button>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a strong password"
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-pass" id="togglePassword" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye" id="eyeIcon"></i>
+            </button>
           </div>
-          <small class="field-error" id="passwordError"></small>
-         
-          <ul class="strength-rules">
-            <li id="ruleLength">Min 8 chars</li>
-            <li id="ruleUpper">Uppercase</li>
-            <li id="ruleLower">Lowercase</li>
-            <li id="ruleNumber">Number</li>
+
+          <div class="strength-meter" id="strengthMeter" aria-hidden="true">
+            <div class="strength-bar" id="strengthBar"></div>
+          </div>
+          <span class="strength-label" id="strengthLabel"></span>
+
+          <ul class="password-rules" id="passwordRules">
+            <li id="rule-length"><i class="fa-solid fa-xmark"></i> Minimum 8 characters</li>
+            <li id="rule-upper"><i class="fa-solid fa-xmark"></i> At least one uppercase letter</li>
+            <li id="rule-lower"><i class="fa-solid fa-xmark"></i> At least one lowercase letter</li>
+            <li id="rule-number"><i class="fa-solid fa-xmark"></i> At least one number</li>
           </ul>
+          <span class="field-error" id="err-password"></span>
         </div>
 
-      
-        <div class="form-group">
+        <div class="form-group" id="group-confirm">
           <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
-          <div class="input-with-btn">
-            <input type="password" id="confirmPassword" placeholder="Re-enter your password">
-            <button type="button" id="toggleConfirm" class="show-hide-btn">Show</button>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock-open input-icon"></i>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Re-enter your password"
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-pass" id="toggleConfirm" aria-label="Toggle confirm password visibility">
+              <i class="fa-solid fa-eye" id="eyeIconConfirm"></i>
+            </button>
           </div>
-          <small class="field-error" id="confirmPasswordError"></small>
+          <span class="field-error" id="err-confirm"></span>
         </div>
 
-        <button type="submit" id="submitBtn">Register Now</button>
+        <div class="form-group form-check" id="group-terms">
+          <label class="checkbox-label">
+            <input type="checkbox" id="terms" name="terms" />
+            <span class="checkmark"></span>
+            I agree to the <a href="#" class="link">Terms &amp; Conditions</a>
+          </label>
+          <span class="field-error" id="err-terms"></span>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span class="btn-text">Create Account</span>
+          <i class="fa-solid fa-arrow-right btn-arrow"></i>
+        </button>
 
       </form>
+
+      <p class="card-footer-note">Already have an account? <a href="#" class="link">Sign in</a></p>
     </div>
-  </div>
+  </main>
 
-  <!-- jQuery loaded before script.js -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
